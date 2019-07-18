@@ -6,7 +6,7 @@
 
 /* Slider */
 
-.logo {
+.Logo {
   display: block;
   flex: 0 0 10%;
   background: #dfdfdf;
@@ -16,7 +16,7 @@
 
 .Slider {
   display: flex;
-  flex: 1 0 50%;
+  flex: 1 0 70%;
 }
 
 .Slider p {
@@ -28,8 +28,13 @@
   font-weight: bold;
 }
 
-.modes {
-  flex: 1 0 45%;
+.Selection {
+  margin: 0 2.5rem;
+}
+
+.MuiButtonBase-root,
+.MuiInputBase-root {
+  font-size: 1.4rem !important;
 }
 
 .rc-slider {

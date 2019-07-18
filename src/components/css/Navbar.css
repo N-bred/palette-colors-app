@@ -1,58 +1,67 @@
 .Navbar {
-  display: flex;
-  align-items: center;
+   display: flex;
+   height: 5%;
+   align-items: center;
 }
 
 /* Slider */
 
 .Logo {
-  display: block;
-  flex: 0 0 10%;
-  background: #dfdfdf;
-  padding: 1.5rem 2rem;
-  text-align: center;
+   display: block;
+   flex: 0 0 10%;
+   background: #dfdfdf;
+   padding: 1.5rem 2rem;
+   text-align: center;
+}
+
+.Logo a {
+   text-decoration: none;
+   color: #444;
+}
+.Logo a:hover {
+   color: #000;
 }
 
 .Slider {
-  display: flex;
-  flex: 1 0 70%;
+   display: flex;
+   flex: 1 0 70%;
 }
 
 .Slider p {
-  margin: 0 1.5rem;
-  font-size: 1.4rem;
+   margin: 0 1.5rem;
+   font-size: 1.4rem;
 }
 
 .Slider span {
-  font-weight: bold;
+   font-weight: bold;
 }
 
 .Selection {
-  margin: 0 2.5rem;
+   margin: 0 2.5rem;
 }
 
 .MuiButtonBase-root,
 .MuiInputBase-root {
-  font-size: 1.4rem !important;
+   font-size: 1.4rem !important;
 }
 
 .rc-slider {
-  width: 50%;
-  display: flex;
-  margin-right: auto;
-  align-items: center;
+   width: 50%;
+   display: flex;
+   margin-right: auto;
+   align-items: center;
 }
 
 .rc-slider-track {
-  background: #b607ff;
+   background: #b607ff;
 }
 
 .rc-slider-handle,
 .rc-slider-handle:focus,
 .rc-slider-handle:active,
 .rc-slider-handle:hover {
-  border: 2px solid #b607ff;
-  background: #fff;
-  margin: 0;
-  box-shadow: none;
+   border: 2px solid #b607ff;
+   background: #fff;
+   margin: 0;
+   box-shadow: none;
 }

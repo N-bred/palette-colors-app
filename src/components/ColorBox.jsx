@@ -1,45 +1,48 @@
 import React, { Component } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import './css/ColorBox.css';
+import { Link } from 'react-router-dom';
 
 export default class ColorBox extends Component {
-  state = {
-    isCopying: false
-  };
+   state = {
+      isCopying: false
+   };
 
-  changeCopyState = () => {
-    this.setState({ isCopying: true }, () => {
-      setTimeout(() => {
-        this.setState({ isCopying: false });
-      }, 1500);
-    });
-  };
+   changeCopyState = () => {
+      this.setState({ isCopying: true }, () => {
+         setTimeout(() => {
+            this.setState({ isCopying: false });
+         }, 1500);
+      });
+   };
 
-  render() {
-    const { name, color } = this.props;
-    const { isCopying } = this.state;
+   render() {
+      const { name, color, id, paletteId } = this.props;
+      const { isCopying } = this.state;
 
-    return (
-      <div className="ColorBox" style={{ background: color }}>
-        <div
-          style={{ background: color }}
-          className={`copy-overlay ${isCopying && 'show'}`}
-        />
+      return (
+         <div className="ColorBox" style={{ background: color }}>
+            <div
+               style={{ background: color }}
+               className={`copy-overlay ${isCopying && 'show'}`}
+            />
 
-        <div className={`copy-msg ${isCopying && 'show'}`}>
-          <h1>Copied!</h1>
-          <p>{color}</p>
-        </div>
+            <div className={`copy-msg ${isCopying && 'show'}`}>
+               <h1>Copied!</h1>
+               <p>{color}</p>
+            </div>
 
-        <CopyToClipboard text={color} onCopy={this.changeCopyState}>
-          <div className="copy-container">
-            <button className="copy-button">Copy</button>
-          </div>
-        </CopyToClipboard>
+            <CopyToClipboard text={color} onCopy={this.changeCopyState}>
+               <div className="copy-container">
+                  <button className="copy-button">Copy</button>
+               </div>
+            </CopyToClipboard>
 
-        <span className="box-name">{name}</span>
-        <span className="see-more">More</span>
-      </div>
-    );
-  }
+            <span className="box-name">{name}</span>
+            <Link className="link-see-more" to={`/palette/${paletteId}/${id}`}>
+               <span className="see-more">More</span>
+            </Link>
+         </div>
+      );
+   }
 }

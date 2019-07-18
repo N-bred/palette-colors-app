@@ -1,0 +1,54 @@
+.Navbar {
+  display: flex;
+  /* height: 5rem; */
+  align-items: center;
+}
+
+/* Slider */
+
+.logo {
+  display: block;
+  flex: 0 0 10%;
+  background: #dfdfdf;
+  padding: 1.5rem 2rem;
+  text-align: center;
+}
+
+.Slider {
+  display: flex;
+  flex: 1 0 50%;
+}
+
+.Slider p {
+  margin: 0 1.5rem;
+  font-size: 1.4rem;
+}
+
+.Slider span {
+  font-weight: bold;
+}
+
+.modes {
+  flex: 1 0 45%;
+}
+
+.rc-slider {
+  width: 50%;
+  display: flex;
+  margin-right: auto;
+  align-items: center;
+}
+
+.rc-slider-track {
+  background: #b607ff;
+}
+
+.rc-slider-handle,
+.rc-slider-handle:focus,
+.rc-slider-handle:active,
+.rc-slider-handle:hover {
+  border: 2px solid #b607ff;
+  background: #fff;
+  margin: 0;
+  box-shadow: none;
+}

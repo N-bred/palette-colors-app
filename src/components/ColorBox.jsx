@@ -17,14 +17,16 @@ export default class ColorBox extends Component {
 
   render() {
     const { name, color } = this.props;
+    const { isCopying } = this.state;
+
     return (
       <div className="ColorBox" style={{ background: color }}>
         <div
           style={{ background: color }}
-          className={`copy-overlay ${this.state.isCopying && 'show'}`}
+          className={`copy-overlay ${isCopying && 'show'}`}
         />
 
-        <div className={`copy-msg ${this.state.isCopying && 'show'}`}>
+        <div className={`copy-msg ${isCopying && 'show'}`}>
           <h1>Copied!</h1>
           <p>{color}</p>
         </div>

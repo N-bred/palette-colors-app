@@ -7,28 +7,27 @@ import './css/Navbar.css';
 
 export default class Navbar extends Component {
   render() {
+    const { level, changeLevel, handleColorChange, format } = this.props;
+
     return (
       <div className="Navbar">
         <div className="Logo">React Palettes</div>
 
         <div className="Slider">
           <p>
-            Level: <span>{this.props.level}</span>
+            Level: <span>{level}</span>
           </p>
           <Slider
-            defaultValue={this.props.level}
+            defaultValue={level}
             min={100}
             max={900}
             step={100}
-            onAfterChange={this.props.changeLevel}
+            onAfterChange={changeLevel}
           />
         </div>
 
         <div className="Selection">
-          <Select
-            onChange={this.props.handleColorChange}
-            value={this.props.format}
-          >
+          <Select onChange={handleColorChange} value={format}>
             <MenuItem value="hex">HEX - #FFFFFF</MenuItem>
             <MenuItem value="rgb">RGB - rgb(255,255,255)</MenuItem>
             <MenuItem value="rgba">RGBA - rgba(255,255,255,1)</MenuItem>

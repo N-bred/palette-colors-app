@@ -27,6 +27,7 @@ export default class Palette extends Component {
             color={color[format]}
             id={color.id}
             paletteId={palette.id}
+            showMore={true}
          />
       ));
 

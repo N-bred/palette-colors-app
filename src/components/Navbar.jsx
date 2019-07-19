@@ -10,24 +10,28 @@ export default class Navbar extends Component {
    render() {
       const { level, changeLevel, handleColorChange, format } = this.props;
 
+      const showSlider = changeLevel && (
+         <div className="Slider">
+            <p>
+               Level: <span>{level}</span>
+            </p>
+            <Slider
+               defaultValue={level}
+               min={100}
+               max={900}
+               step={100}
+               onAfterChange={changeLevel}
+            />
+         </div>
+      );
+
       return (
          <div className="Navbar">
             <div className="Logo">
                <Link to="/">React Palettes</Link>
             </div>
 
-            <div className="Slider">
-               <p>
-                  Level: <span>{level}</span>
-               </p>
-               <Slider
-                  defaultValue={level}
-                  min={100}
-                  max={900}
-                  step={100}
-                  onAfterChange={changeLevel}
-               />
-            </div>
+            {showSlider}
 
             <div className="Selection">
                <Select onChange={handleColorChange} value={format}>

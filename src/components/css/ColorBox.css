@@ -7,6 +7,10 @@
    display: inline-block;
 }
 
+.ColorBox.big {
+   height: 45%;
+}
+
 .see-more,
 .box-name {
    text-transform: uppercase;
@@ -17,17 +21,11 @@
 
 .link-see-more {
    text-decoration: none;
-   color: white;
-   transition: color 0.3s ease;
 }
-.link-see-more:hover {
-   color: #444;
-}
-
 .see-more {
    bottom: 0;
    right: 0;
-   background: rgba(255, 255, 255, 0.5);
+   background: rgba(255, 255, 255, 0.349);
 }
 
 .box-name {
@@ -47,7 +45,8 @@
    pointer-events: all;
 }
 
-.copy-button {
+.copy-button,
+.goBack-button {
    background: rgba(255, 255, 255, 0.4);
    border: none;
    padding: 0.5rem 2rem;
@@ -58,20 +57,28 @@
    transition: 0.3s ease;
    pointer-events: none;
    border-radius: 3px;
-
    text-transform: uppercase;
 }
 
-.copy-button:hover {
+.goBack-button {
+   color: #fff;
+   opacity: 1;
+   pointer-events: all;
+}
+
+.copy-button:hover,
+.goBack-button:hover {
    background: rgba(255, 255, 255, 0.6);
    transform: translateY(-0.3rem);
 }
 
-.copy-button:focus {
+.copy-button:focus,
+.goBack-button:focus {
    outline: none;
 }
 
-.copy-button:active {
+.copy-button:active,
+.goBack-button:active {
    transform: translateY(-0.1rem);
 }
 
@@ -117,4 +124,12 @@
 
 .copy-msg p {
    font-size: 1.1rem;
+}
+
+.text-white {
+   color: #fff;
+}
+
+.text-black {
+   color: #444;
 }

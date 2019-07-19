@@ -8,7 +8,9 @@ import SingleColorPalette from './components/SingleColorPalette';
 
 class App extends Component {
    findPaletteByid = id => {
-      const finded = seedColors.find(palette => palette.id === id);
+      const finded = seedColors.find(
+         palette => palette.id.toLowerCase() === id.toLowerCase()
+      );
       return generatePalette(finded);
    };
 
@@ -43,7 +45,8 @@ class App extends Component {
                         palette={this.findPaletteByid(
                            routeProps.match.params.paletteId
                         )}
-                        id={routeProps.match.params.colorId}
+                        {...routeProps}
+                        id={routeProps.match.params.colorId.toLowerCase()}
                      />
                   )}
                />

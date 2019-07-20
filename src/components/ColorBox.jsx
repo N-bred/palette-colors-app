@@ -54,7 +54,7 @@ export default class ColorBox extends Component {
 
       return (
          <div
-            className={`${ColorBox} ${isBig && 'big'}`}
+            className={`ColorBox ${isBig && 'big'}`}
             style={{ background: color }}
          >
             <div

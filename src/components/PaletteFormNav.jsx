@@ -7,12 +7,26 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Button from '@material-ui/core/Button';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import PaletteFormModal from './PaletteFormModal';
 
 export default class PaletteFormNav extends Component {
    state = {
-      open: true
+      open: true,
+      showingForm: false,
+      showingEmojiPicker: false
    };
+
+   handleShowForm = () => {
+      this.setState({
+         showingForm: !this.state.showingForm,
+         showingEmojiPicker: false
+      });
+   };
+
+   handleShowPicker = () => {
+      this.setState({ showingEmojiPicker: true });
+   };
+
    render() {
       const {
          classes,
@@ -21,7 +35,8 @@ export default class PaletteFormNav extends Component {
          newPaletteName,
          handleNewPaletteName,
          history,
-         open
+         open,
+         handleEmoji
       } = this.props;
 
       return (
@@ -34,7 +49,7 @@ export default class PaletteFormNav extends Component {
                   [classes.appBarShift]: open
                })}
             >
-               <Toolbar>
+               <Toolbar className={classes.toolbar}>
                   <IconButton
                      color="inherit"
                      aria-label="Open drawer"
@@ -44,34 +59,43 @@ export default class PaletteFormNav extends Component {
                   >
                      <MenuIcon />
                   </IconButton>
-                  <Typography variant="h6" noWrap>
-                     Persistent drawer
+                  <Typography variant="h4" noWrap>
+                     Create a Palette
                   </Typography>
 
-                  <ValidatorForm onSubmit={savePalette}>
-                     <TextValidator
-                        label="Palette Name"
-                        value={newPaletteName}
-                        onChange={handleNewPaletteName}
-                        validators={['required', 'isPaletteNameUnique']}
-                        errorMessages={[
-                           'This field is required',
-                           'Palettes need to have an unique name'
-                        ]}
-                     />
-
-                     <Button variant="contained" color="primary" type="submit">
+                  <div className={classes.navBtns}>
+                     <Button
+                        variant="contained"
+                        color="primary"
+                        type="submit"
+                        onClick={this.handleShowForm}
+                     >
                         Save Palette
                      </Button>
+
+                     {this.state.showingForm && (
+                        <PaletteFormModal
+                           savePalette={savePalette}
+                           newPaletteName={newPaletteName}
+                           handleNewPaletteName={handleNewPaletteName}
+                           showingForm={this.state.showingForm}
+                           handleShowForm={this.handleShowForm}
+                           classes={classes}
+                           handleShowPicker={this.handleShowPicker}
+                           showingEmojiPicker={this.state.showingEmojiPicker}
+                           handleEmoji={handleEmoji}
+                        />
+                     )}
 
                      <Button
                         variant="contained"
                         color="secondary"
                         onClick={() => history.push('/')}
+                        className={classes.goBackBtn}
                      >
                         Go back
                      </Button>
-                  </ValidatorForm>
+                  </div>
                </Toolbar>
             </AppBar>
          </>

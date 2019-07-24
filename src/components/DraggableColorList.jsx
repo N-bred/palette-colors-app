@@ -5,7 +5,7 @@ import { SortableContainer } from 'react-sortable-hoc';
 
 const styles = {
    root: {
-      height: '100vh'
+      height: '100%'
    }
 };
 

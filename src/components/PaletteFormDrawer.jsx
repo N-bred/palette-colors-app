@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Drawer from '@material-ui/core/Drawer';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
@@ -41,18 +40,19 @@ export default class PaletteFormDrawer extends Component {
 
                {/* Our Work Starts */}
 
-               <Typography variant="h4">Desing your palette</Typography>
-
-               <ColorPicker
-                  clearColors={clearColors}
-                  randomColor={randomColor}
-                  disabledButtons={disabledButtons}
-                  handleColorChange={handleColorChange}
-                  actualColor={actualColor}
-                  createColors={createColors}
-                  newName={newName}
-                  handleNewName={handleNewName}
-               />
+               <div className={classes.colorPickerContainer}>
+                  <ColorPicker
+                     clearColors={clearColors}
+                     randomColor={randomColor}
+                     disabledButtons={disabledButtons}
+                     handleColorChange={handleColorChange}
+                     actualColor={actualColor}
+                     createColors={createColors}
+                     newName={newName}
+                     handleNewName={handleNewName}
+                     classes={classes}
+                  />
+               </div>
 
                {/* Our Work Ends */}
             </Drawer>

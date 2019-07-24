@@ -9,9 +9,12 @@ import PaletteFromDrawer from './PaletteFormDrawer';
 
 export default function NewPaletteForm(props) {
    const classes = useStyles();
-   const [open, setOpen] = React.useState(false);
-   const [actualColor, setActualColor] = React.useState('#446688');
-   const [colors, setColors] = React.useState(props.palettes[0].colors);
+   const [open, setOpen] = React.useState(true);
+   const [actualColor, setActualColor] = React.useState('#03a2ec');
+   const [emoji, setEmoji] = React.useState('🤙');
+   const [colors, setColors] = React.useState(
+      props.palettes[0].colors.slice(0, -1)
+   );
    const [newName, setNewName] = React.useState('');
    const [newPaletteName, setNewPaletteName] = React.useState('');
 
@@ -64,15 +67,19 @@ export default function NewPaletteForm(props) {
       setColors([...colors.filter(color => color.name !== name)]);
    }
 
+   function handleEmoji(emoji) {
+      setEmoji(emoji.native);
+   }
+
    function savePalette() {
       const newPalette = {
          paletteName: newPaletteName,
          id: newPaletteName.toLowerCase().replace(/ /g, '-'),
-         emoji: '🤙',
+         emoji,
          colors
       };
-      props.savePalette(newPalette);
 
+      props.savePalette(newPalette);
       props.history.push('/');
    }
 
@@ -105,6 +112,7 @@ export default function NewPaletteForm(props) {
             handleNewPaletteName={handleNewPaletteName}
             history={props.history}
             open={open}
+            handleEmoji={handleEmoji}
          />
 
          <PaletteFromDrawer

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ChromePicker } from 'react-color';
 import Button from '@material-ui/core/Button';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-
+import Typography from '@material-ui/core/Typography';
 export default class ColorPicker extends Component {
    render() {
       const {
@@ -13,11 +13,13 @@ export default class ColorPicker extends Component {
          actualColor,
          createColors,
          newName,
-         handleNewName
+         handleNewName,
+         classes
       } = this.props;
       return (
          <>
-            <div>
+            <Typography variant="h3">Desing your palette</Typography>
+            <div className={classes.btnsContainer}>
                <Button
                   variant="contained"
                   color="secondary"
@@ -38,10 +40,15 @@ export default class ColorPicker extends Component {
             <ChromePicker
                onChangeComplete={handleColorChange}
                color={actualColor}
+               className={classes.colorPicker}
             />
 
-            <ValidatorForm onSubmit={createColors}>
+            <ValidatorForm
+               onSubmit={createColors}
+               className={classes.colorPickerForm}
+            >
                <TextValidator
+                  label="Choose a name"
                   value={newName}
                   onChange={handleNewName}
                   validators={[
@@ -62,7 +69,8 @@ export default class ColorPicker extends Component {
                   color="primary"
                   style={{
                      background: disabledButtons ? 'grey' : actualColor,
-                     color: '#fff'
+                     color: '#fff',
+                     margin: '1.5rem 0'
                   }}
                   disabled={disabledButtons}
                >

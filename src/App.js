@@ -8,9 +8,29 @@ import SingleColorPalette from './components/SingleColorPalette';
 import NewPaletteForm from './components/NewPaletteForm';
 
 class App extends Component {
-   state = {
-      palettes: seedColors
-   };
+   constructor(props) {
+      super(props);
+      this.state = {
+         palettes: this.validateLS()
+      };
+      this.validateLS = this.validateLS.bind(this);
+   }
+
+   validateLS() {
+      if (localStorage.getItem('palettes')) {
+         return JSON.parse(localStorage.getItem('palettes'));
+      } else {
+         return seedColors;
+      }
+   }
+
+   componentDidMount() {
+      localStorage.setItem('palettes', JSON.stringify(this.state.palettes));
+   }
+
+   componentDidUpdate() {
+      localStorage.setItem('palettes', JSON.stringify(this.state.palettes));
+   }
 
    findPaletteByid = id => {
       const finded = this.state.palettes.find(
@@ -23,6 +43,13 @@ class App extends Component {
       this.setState({ palettes: [...this.state.palettes, newPalette] });
    };
 
+   removePalette = id => {
+      const newPalettes = this.state.palettes.filter(
+         palette => palette.id !== id
+      );
+      this.setState(() => ({ palettes: newPalettes }));
+   };
+
    render() {
       return (
          <div>
@@ -33,6 +60,7 @@ class App extends Component {
                   render={routerProps => (
                      <PaletteList
                         palettes={this.state.palettes}
+                        removePalette={this.removePalette}
                         {...routerProps}
                      />
                   )}

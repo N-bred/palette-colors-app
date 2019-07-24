@@ -1,49 +1,7 @@
 import React from 'react';
-
 import { withStyles } from '@material-ui/styles';
-
-const styles = {
-   root: {
-      backgroundColor: '#fff',
-      borderRadius: '5px',
-      padding: '0.5rem',
-      position: 'relative',
-      overflow: 'hidden',
-      '&:hover': {
-         cursor: 'pointer'
-      }
-   },
-
-   colors: {
-      backgroundColor: '#fff',
-      height: '150px',
-      width: '100%',
-      overflow: 'hidden',
-      display: 'flex',
-      flexWrap: 'wrap',
-      padding: '.2rem',
-      borderRadius: '5px'
-   },
-
-   title: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      padding: '.5rem',
-      position: 'relative',
-      fontSize: '1.6rem',
-      fontWeight: 'normal'
-   },
-   emoji: {
-      marginLeft: '1rem',
-      fontSize: '1.5rem'
-   },
-   miniBox: {
-      height: '25%',
-      flex: '0 0 20%',
-      position: 'relative'
-   }
-};
+import styles from './styles/MiniPalette';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 function MiniPalette(props) {
    const { classes, paletteName, emoji, colors, handleGoToPalette } = props;
@@ -57,14 +15,15 @@ function MiniPalette(props) {
    ));
 
    return (
-      <div className={classes.root} onClick={handleGoToPalette}>
-         <div className={classes.colors}>
-            {/* Mini boxes */}
-            {miniColorBoxes}
+      <div className={classes.paletteContainer}>
+         <DeleteIcon className={classes.delete} onClick={props.removeSelf} />
+
+         <div className={classes.root} onClick={handleGoToPalette}>
+            <div className={classes.colors}>{miniColorBoxes}</div>
+            <h5 className={classes.title}>
+               {paletteName} <span className={classes.emoji}>{emoji}</span>
+            </h5>
          </div>
-         <h5 className={classes.title}>
-            {paletteName} <span className={classes.emoji}>{emoji}</span>
-         </h5>
       </div>
    );
 }

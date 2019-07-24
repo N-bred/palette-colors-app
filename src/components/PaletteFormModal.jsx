@@ -93,7 +93,7 @@ export default function PaletteFormModal(props) {
                      <Button onClick={handleClose} color="primary">
                         Cancel
                      </Button>
-                     <Button color="primary" type="submit">
+                     <Button color="primary" variant="contained" type="submit">
                         Next
                      </Button>
                   </DialogActions>

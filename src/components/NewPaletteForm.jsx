@@ -8,141 +8,145 @@ import useStyles from './styles/NewPaletteFormStyles';
 import PaletteFromDrawer from './PaletteFormDrawer';
 
 export default function NewPaletteForm(props) {
-   const classes = useStyles();
-   const [open, setOpen] = React.useState(true);
-   const [actualColor, setActualColor] = React.useState('#03a2ec');
-   const [emoji, setEmoji] = React.useState('🤙');
-   const [colors, setColors] = React.useState(
-      props.palettes[0].colors.slice(0, -1)
-   );
-   const [newName, setNewName] = React.useState('');
-   const [newPaletteName, setNewPaletteName] = React.useState('');
+  const classes = useStyles();
+  const windowMobile = window.innerWidth <= 575.98;
+  const [open, setOpen] = React.useState(!windowMobile);
+  const [actualColor, setActualColor] = React.useState('#03a2ec');
+  const [emoji, setEmoji] = React.useState('🤙');
+  const [colors, setColors] = React.useState(
+    props.palettes[0].colors.slice(0, -1)
+  );
+  const [newName, setNewName] = React.useState('');
+  const [newPaletteName, setNewPaletteName] = React.useState('');
 
-   useEffect(() => {
-      ValidatorForm.addValidationRule('isColorNameUnique', value =>
-         colors.every(color => color.name.toLowerCase() !== value.toLowerCase())
-      );
+  useEffect(() => {
+    document.documentElement.style.setProperty('--overflowStyles', 'hidden');
+  }, []);
 
-      ValidatorForm.addValidationRule('isColorUnique', () =>
-         colors.every(color => color.color !== actualColor)
-      );
+  useEffect(() => {
+    ValidatorForm.addValidationRule('isColorNameUnique', value =>
+      colors.every(color => color.name.toLowerCase() !== value.toLowerCase())
+    );
 
-      ValidatorForm.addValidationRule('isPaletteNameUnique', () =>
-         props.palettes.every(
-            palette =>
-               palette.paletteName.toLowerCase() !==
-               newPaletteName.toLowerCase()
-         )
-      );
-   });
+    ValidatorForm.addValidationRule('isColorUnique', () =>
+      colors.every(color => color.color !== actualColor)
+    );
 
-   function handleDrawerOpen() {
-      setOpen(true);
-   }
+    ValidatorForm.addValidationRule('isPaletteNameUnique', () =>
+      props.palettes.every(
+        palette =>
+          palette.paletteName.toLowerCase() !== newPaletteName.toLowerCase()
+      )
+    );
+  });
 
-   function handleDrawerClose() {
-      setOpen(false);
-   }
+  function handleDrawerOpen() {
+    setOpen(true);
+  }
 
-   function handleColorChange(e) {
-      setActualColor(e.hex);
-   }
+  function handleDrawerClose() {
+    setOpen(false);
+  }
 
-   function createColors() {
-      const newColor = { color: actualColor, name: newName };
+  function handleColorChange(e) {
+    setActualColor(e.hex);
+  }
 
-      setColors([...colors, newColor]);
-      setActualColor('#446688');
-      setNewName('');
-   }
+  function createColors() {
+    const newColor = { color: actualColor, name: newName };
 
-   function handleNewName(e) {
-      setNewName(e.target.value);
-   }
-   function handleNewPaletteName(e) {
-      setNewPaletteName(e.target.value);
-   }
+    setColors([...colors, newColor]);
+    setActualColor('#446688');
+    setNewName('');
+  }
 
-   function removeColor(name) {
-      setColors([...colors.filter(color => color.name !== name)]);
-   }
+  function handleNewName(e) {
+    setNewName(e.target.value);
+  }
+  function handleNewPaletteName(e) {
+    setNewPaletteName(e.target.value);
+  }
 
-   function handleEmoji(emoji) {
-      setEmoji(emoji.native);
-   }
+  function removeColor(name) {
+    setColors([...colors.filter(color => color.name !== name)]);
+  }
 
-   function savePalette() {
-      const newPalette = {
-         paletteName: newPaletteName,
-         id: newPaletteName.toLowerCase().replace(/ /g, '-'),
-         emoji,
-         colors
-      };
+  function handleEmoji(emoji) {
+    setEmoji(emoji.native);
+  }
 
-      props.savePalette(newPalette);
-      props.history.push('/');
-   }
+  function savePalette() {
+    const newPalette = {
+      paletteName: newPaletteName,
+      id: newPaletteName.toLowerCase().replace(/ /g, '-'),
+      emoji,
+      colors
+    };
 
-   const onSortEnd = ({ oldIndex, newIndex }) => {
-      const oldColors = colors;
-      setColors([...arrayMove(oldColors, oldIndex, newIndex)]);
-   };
+    props.savePalette(newPalette);
+    props.history.push('/');
+  }
 
-   const clearColors = () => {
-      setColors([]);
-   };
+  const onSortEnd = ({ oldIndex, newIndex }) => {
+    const oldColors = colors;
+    setColors([...arrayMove(oldColors, oldIndex, newIndex)]);
+  };
 
-   const randomColor = () => {
-      const allColors = props.palettes.map(p => p.colors).flat();
-      const randomNumber = ~~(Math.random() * allColors.length);
-      const randomColor = allColors[randomNumber];
+  const clearColors = () => {
+    setColors([]);
+  };
 
-      setColors([...colors, randomColor]);
-   };
+  const randomColor = () => {
+    const allColors = props.palettes.map(p => p.colors).flat();
+    const randomNumber = ~~(Math.random() * allColors.length);
+    const randomColor = allColors[randomNumber];
 
-   const disabledButtons = colors.length === props.maxColors ? true : false;
+    setColors([...colors, randomColor]);
+  };
 
-   return (
-      <div className={classes.root}>
-         <PaletteFormNav
-            classes={classes}
-            handleDrawerOpen={handleDrawerOpen}
-            savePalette={savePalette}
-            newPaletteName={newPaletteName}
-            handleNewPaletteName={handleNewPaletteName}
-            history={props.history}
-            open={open}
-            handleEmoji={handleEmoji}
-         />
+  const disabledButtons = colors.length === props.maxColors ? true : false;
 
-         <PaletteFromDrawer
-            classes={classes}
-            open={open}
-            handleDrawerClose={handleDrawerClose}
-            clearColors={clearColors}
-            randomColor={randomColor}
-            disabledButtons={disabledButtons}
-            handleColorChange={handleColorChange}
-            actualColor={actualColor}
-            createColors={createColors}
-            newName={newName}
-            handleNewName={handleNewName}
-         />
+  return (
+    <div className={classes.root}>
+      <PaletteFormNav
+        classes={classes}
+        handleDrawerOpen={handleDrawerOpen}
+        savePalette={savePalette}
+        newPaletteName={newPaletteName}
+        handleNewPaletteName={handleNewPaletteName}
+        history={props.history}
+        open={open}
+        handleEmoji={handleEmoji}
+      />
 
-         <main
-            className={clsx(classes.content, {
-               [classes.contentShift]: open
-            })}
-         >
-            <div className={classes.drawerHeader} />
+      <PaletteFromDrawer
+        classes={classes}
+        open={open}
+        handleDrawerClose={handleDrawerClose}
+        clearColors={clearColors}
+        randomColor={randomColor}
+        disabledButtons={disabledButtons}
+        handleColorChange={handleColorChange}
+        actualColor={actualColor}
+        createColors={createColors}
+        newName={newName}
+        handleNewName={handleNewName}
+      />
 
-            <DraggableColorList
-               colors={colors}
-               removeColor={removeColor}
-               axis="xy"
-               onSortEnd={onSortEnd}
-            />
-         </main>
-      </div>
-   );
+      <main
+        className={clsx(classes.content, {
+          [classes.contentShift]: open
+        })}
+      >
+        <div className={classes.drawerHeader} />
+
+        <DraggableColorList
+          colors={colors}
+          removeColor={removeColor}
+          axis="xy"
+          onSortEnd={onSortEnd}
+        />
+      </main>
+    </div>
+  );
 }

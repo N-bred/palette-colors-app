@@ -1,27 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap');
 
+:root {
+  --overflowStyles: auto;
+}
+
 html {
-   box-sizing: border-box;
-   font-size: 62.5%;
+  box-sizing: border-box;
+  font-size: 62.5%;
 }
 
 *,
 *::before,
 *::after {
-   box-sizing: inherit;
-   margin: 0;
-   padding: 0;
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-   font-size: 1.6rem;
-   font-family: 'Roboto', sans-serif;
-   overflow: hidden;
-}
-
-@media only screen and (max-width: 600px) {
-   body {
-      overflow: visible;
-      overflow-x: hidden;
-   }
+  font-size: 1.6rem;
+  font-family: 'Roboto', sans-serif;
+  height: 100%;
+  background: #5f34af;
+  overflow: var(--overflowStyles);
 }

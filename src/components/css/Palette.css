@@ -1,22 +1,24 @@
 .Palette {
-   height: 100vh;
+  height: 100vh;
 }
 .Palette-colors {
-   height: 90%;
+  height: 90%;
+  background: #fff;
 }
 
 /* Footer */
 
 .palette-footer {
-   display: flex;
-   align-items: center;
-   justify-content: flex-end;
-   border-top: 1px solid rgba(0, 0, 0, 0.4);
-   height: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-top: 1px solid rgba(0, 0, 0, 0.4);
+  height: 5%;
+  background: #fff;
 }
 
 .palette-footer h3 {
-   font-weight: lighter;
-   margin: 0.5rem 1.5rem;
-   font-size: 1.5rem;
+  font-weight: lighter;
+  margin: 0.5rem 1.5rem;
+  font-size: 1.5rem;
 }

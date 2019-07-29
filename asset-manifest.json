@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/palette-colors-app/static/css/main.037ebe99.chunk.css",
-    "main.js": "/palette-colors-app/static/js/main.7dc6fa8d.chunk.js",
-    "main.js.map": "/palette-colors-app/static/js/main.7dc6fa8d.chunk.js.map",
+    "main.js": "/palette-colors-app/static/js/main.acbc2447.chunk.js",
+    "main.js.map": "/palette-colors-app/static/js/main.acbc2447.chunk.js.map",
     "runtime~main.js": "/palette-colors-app/static/js/runtime~main.43599ef0.js",
     "runtime~main.js.map": "/palette-colors-app/static/js/runtime~main.43599ef0.js.map",
     "static/css/2.e337d257.chunk.css": "/palette-colors-app/static/css/2.e337d257.chunk.css",
     "static/js/2.fe96a94d.chunk.js": "/palette-colors-app/static/js/2.fe96a94d.chunk.js",
     "static/js/2.fe96a94d.chunk.js.map": "/palette-colors-app/static/js/2.fe96a94d.chunk.js.map",
     "index.html": "/palette-colors-app/index.html",
-    "precache-manifest.9afe02a64f09190f1b887e4a2dbe2881.js": "/palette-colors-app/precache-manifest.9afe02a64f09190f1b887e4a2dbe2881.js",
+    "precache-manifest.e90790b9b85d72139b33d551990754b7.js": "/palette-colors-app/precache-manifest.e90790b9b85d72139b33d551990754b7.js",
     "service-worker.js": "/palette-colors-app/service-worker.js",
     "static/css/2.e337d257.chunk.css.map": "/palette-colors-app/static/css/2.e337d257.chunk.css.map",
     "static/css/main.037ebe99.chunk.css.map": "/palette-colors-app/static/css/main.037ebe99.chunk.css.map"

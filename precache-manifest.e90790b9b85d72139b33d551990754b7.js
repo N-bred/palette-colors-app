@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "660d87c3cede4da61bb54a3c7687d5f0",
+    "revision": "a676fd0d73f516c1036e69b4d395e395",
     "url": "/palette-colors-app/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/palette-colors-app/static/css/2.e337d257.chunk.css"
   },
   {
-    "revision": "313325582206be4fb435",
+    "revision": "f6a74afa85971c5be2e0",
     "url": "/palette-colors-app/static/css/main.037ebe99.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/palette-colors-app/static/js/2.fe96a94d.chunk.js"
   },
   {
-    "revision": "313325582206be4fb435",
-    "url": "/palette-colors-app/static/js/main.7dc6fa8d.chunk.js"
+    "revision": "f6a74afa85971c5be2e0",
+    "url": "/palette-colors-app/static/js/main.acbc2447.chunk.js"
   },
   {
     "revision": "685b3917276cd80cfbf6",
